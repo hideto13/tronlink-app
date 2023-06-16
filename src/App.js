@@ -14,10 +14,6 @@ function App() {
     getSign,
   } = useTronlink()
 
-  function refreshPage() {
-    window.location.reload(false)
-  }
-
   useEffect(() => {
     const interval = setInterval(async () => {
       if (!isConnected && !rejectConnection) connectToWallet()
@@ -41,10 +37,6 @@ function App() {
               Get Sign
             </button>
           </>
-        ) : rejectConnection ? (
-          <button className='App-button' onClick={refreshPage}>
-            Reload connection
-          </button>
         ) : (
           <button className='App-button' onClick={connectToWallet}>
             Connect TronLink
