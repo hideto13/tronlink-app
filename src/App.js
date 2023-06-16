@@ -10,6 +10,8 @@ function App() {
     walletName,
     connectToWallet,
     rejectConnection,
+    network,
+    getSign,
   } = useTronlink()
 
   function refreshPage() {
@@ -34,6 +36,10 @@ function App() {
             <p>Wallet Name: {walletName}</p>
             <p>Address: {address}</p>
             <p>Balance: {trxBalance}</p>
+            <p>Network Selected: {network}</p>
+            <button className='App-button' onClick={getSign}>
+              Get Sign
+            </button>
           </>
         ) : rejectConnection ? (
           <button className='App-button' onClick={refreshPage}>

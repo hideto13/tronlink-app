@@ -4,8 +4,15 @@ export const useTronlink = () => {
   const [trxBalance, setTrxBalance] = useState(0)
   const [isConnected, setIsConnected] = useState(false)
   const [address, setAddress] = useState('')
+  const [network, setNetwork] = useState('')
   const [walletName, setWalletName] = useState('')
   const [rejectConnection, setRejectConnection] = useState(false)
+
+  async function getSign() {
+    await window.tronWeb.trx
+      .sign((100).toString(16))
+      .then(res => console.log(res))
+  }
 
   const connectToWallet = useCallback(async () => {
     if (!window.tronLink) return
@@ -26,6 +33,7 @@ export const useTronlink = () => {
             setAddress(base58)
             setWalletName(name || '')
             setIsConnected(true)
+            setNetwork(window.tronWeb.fullNode.host)
             window.tronWeb.trx
               .getBalance(base58)
               .then(trxAmount => setTrxBalance(trxAmount))
@@ -77,5 +85,7 @@ export const useTronlink = () => {
     walletName,
     connectToWallet,
     rejectConnection,
+    network,
+    getSign,
   }
 }
