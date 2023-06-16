@@ -12,3 +12,13 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+.App-button {
+  background-color: cadetblue;
+  color: white;
+  padding: 10px 20px;
+  font-size: 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
